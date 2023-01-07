@@ -1,3 +1,4 @@
+// npm libraries
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
@@ -6,9 +7,14 @@ import dotenv from "dotenv";
 import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
+import bcrypt from "bcrypt";
 
+// node native libraries
 import path from "path";
 import { fileURLToPath } from "url";
+
+// created modules
+import { register } from "./controllers/auth.js";
 
 // CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -35,6 +41,9 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
+
+// ROUTES WITH FILES
+app.post("/auth/register", upload.single("picture"), register);
 
 // SETTING MONGOOSE UP
 const PORT = process.env.PORT || 6001;
