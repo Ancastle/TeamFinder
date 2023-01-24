@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 import Navbar from "scenes/navbar";
 import ProfileSummary from "scenes/widgets/ProfileSummary";
+import CreatePost from "scenes/widgets/CreatePost";
 
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px");
@@ -24,7 +25,9 @@ const HomePage = () => {
         <Box
           flexBasis={isNonMobileScreens ? "42%" : undefined}
           mt={isNonMobileScreens ? undefined : "2rem"}
-        ></Box>
+        >
+          <CreatePost picturePath={picturePath} />
+        </Box>
         {isNonMobileScreens && <Box flexBasis="26%"></Box>}
       </Box>
     </Box>
