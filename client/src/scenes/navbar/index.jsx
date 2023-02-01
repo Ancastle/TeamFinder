@@ -27,8 +27,7 @@ const Navbar = () => {
   const alt = theme.palette.background.alt;
 
   const navigate = useNavigate();
-  // const user = useSelector((state) => state.user);
-  const user = { firstName: "Janaya", lastName: "Talkasha" };
+  const user = useSelector((state) => state.user);
 
   const fullName = `${user.firstName} ${user.lastName}`;
 

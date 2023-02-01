@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
 import Post from "./Post";
@@ -37,9 +37,11 @@ const Posts = ({ userId, isProfile = false }) => {
     }
   }, []);
 
+  const reversedPosts = useMemo(() => [...posts].reverse(), [posts]);
+
   return (
     <>
-      {posts.map(
+      {reversedPosts.map(
         ({
           _id,
           userId,
