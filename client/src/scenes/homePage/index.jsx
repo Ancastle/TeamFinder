@@ -5,6 +5,8 @@ import Navbar from "scenes/navbar";
 import ProfileSummary from "scenes/widgets/ProfileSummary";
 import CreatePost from "scenes/widgets/CreatePost";
 import Posts from "scenes/widgets/Posts";
+import Advertising from "components/Advertising";
+import FriendList from "components/FriendList";
 
 const HomePage = () => {
   const isNonMobileScreens = useMediaQuery("(min-width:1000px");
@@ -30,7 +32,13 @@ const HomePage = () => {
           <CreatePost picturePath={picturePath} />
           <Posts userId={_id} />
         </Box>
-        {isNonMobileScreens && <Box flexBasis="26%"></Box>}
+        {isNonMobileScreens && (
+          <Box flexBasis="26%">
+            <Advertising />
+            <Box m="2rem 0" />
+            <FriendList userId={_id} />
+          </Box>
+        )}
       </Box>
     </Box>
   );

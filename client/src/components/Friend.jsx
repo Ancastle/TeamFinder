@@ -1,5 +1,6 @@
 import { PersonAddOutlined, PersonRemoveOutlined } from "@mui/icons-material";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
+import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setFriends } from "state";
@@ -19,7 +20,10 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const main = palette.neutral.main;
   const medium = palette.primary.medium;
 
-  const isFriend = friends.find((friend) => friend._id === friendId);
+  const isFriend = useMemo(
+    () => friends.find((friend) => friend._id === friendId),
+    [friends, friendId]
+  );
 
   const patchFriend = async () => {
     const response = await fetch(
