@@ -35,7 +35,7 @@ const Posts = ({ userId, isProfile = false }) => {
     } else {
       getPosts();
     }
-  }, []);
+  }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
   const reversedPosts = useMemo(() => [...posts].reverse(), [posts]);
 
